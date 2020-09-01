@@ -161,6 +161,7 @@
 		left: 0;
 		height: 100%;
 		width: 3px;
+
 		background-color: var(--color-primary);
 		transform: scaleY(0);
 		transition: transform .2s, width .4s (cubic-bezier(1, .01, 0, .99)) .2s, background-color .1s;
@@ -407,15 +408,18 @@
 		width: 1rem;
 		margin-right: .7rem;
 		//Older browsers
-		// background-image: url(../img/chevron-thin-right.svg);
-		// background-size: cover;
+		background-image: url(../img/chevron-thin-right.svg);
+		background-size: cover;
 
 		//Newer browsers - masks
-		background-color: var(--color-primary);
-		mask-image: url(../img/chevron-thin-right.svg);
-		-webkit-mask-image: url(../img/chevron-thin-right.svg);
-		mask-size: cover;
-		-webkit-mask-size: cover;
+		@supports (-webkit-mask-image: url()) or (mask-image: url()) {
+			background-color: var(--color-primary);
+			mask-image: url(../img/chevron-thin-right.svg);
+			-webkit-mask-image: url(../img/chevron-thin-right.svg);
+			mask-size: cover;
+			-webkit-mask-size: cover;
+			background-image: none;
+		}
 	}
 }
 
